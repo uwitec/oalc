@@ -1,0 +1,80 @@
+<div class="pageContent">
+
+    <form method="post" action="__URL__/update/navTabId/__MODULE__" class="pageForm required-validate"
+          onsubmit="return validateCallback(this, dialogAjaxDone)">
+        <input type="hidden" name="user_id" value="<?php echo $_SESSION[C('USER_AUTH_KEY')] ?>"/>
+        <input type="hidden" name="id" value="{$vo.id}"/>
+
+        <div class="pageFormContent" layoutH="58">
+
+            <table width="420" height="185" border="0">
+                <tr>
+                    <td width="85">考勤日期：</td>
+                    <td width="335">{$vo.attdate}</td>
+                </tr>
+                <tr>
+                    <td>考勤员工:</td>
+                    <td>{$vo['userid']|getUsernameByid}</td>
+                </tr>
+                <tr>
+                    <td>签到时间:</td>
+                    <td>{$vo.workstarttime}</td>
+                </tr>
+                <tr>
+                    <td>考勤情况:</td>
+                    <td>
+                        <if condition="$vo.status eq 1">
+                            按时上班！
+                        </if>
+                        <if condition="$vo.status eq 0">
+                            迟到！
+                        </if>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>备注:</td>
+                    <td> {$vo.notes}</td>
+                </tr>
+                <tr>
+                    <td>考勤状态:</td>
+                    <td>
+                        <input type="radio" name="status" value="1"
+                        <if condition="$vo.status eq 1">
+                            checked
+                        </if>
+                        >因公迟到
+                        <input type="radio" name="status" value="0"
+                        <if condition="$vo.status eq 0">
+                            checked
+                        </if>
+                        >无合理原因迟到
+                    </td>
+                </tr>
+            </table>
+
+            <input type="hidden" name="id" value="{$vo.id}"/>
+
+        </div>
+        <div class="formBar">
+            <ul>
+                <li>
+                    <div class="buttonActive">
+                        <div class="buttonContent">
+                            <button type="submit">修改</button>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="button">
+                        <div class="buttonContent">
+                            <button type="button" class="close">取消</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </form>
+
+</div>
+

@@ -1,0 +1,44 @@
+<?php if (!defined('THINK_PATH')) exit();?>
+<script language="JavaScript">
+<!--
+function checkName(){
+	ThinkAjax.send('__URL__/checkAccount/','ajax=1&account='+$F('account'));
+}
+//-->
+</script>
+
+
+<div class="pageContent">
+	
+	<form method="post" action="__URL__/insert/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone)">
+		<div class="pageFormContent" layoutH="58">
+
+			<div class="unit">
+				<label>账号：</label>
+				<input type="text" alt="请输入账号" class="required alphanumeric" size="30" maxlength="20" name="account" value="<?php echo ($vo["account"]); ?>" />
+			</div>
+			<div class="unit">
+				<label>密码：</label>
+				<input type="text"   alt="请输入密码"  name="password" size="30" maxlength="20" class="required alphanumeric"/>
+			</div>
+            <div class="unit">
+				<label>姓名：</label>
+				<input type="text"  alt="请输入姓名"  class="required" size="30" maxlength="20" name="nickname" />
+			</div>
+			<div class="unit">
+				<label>状态：</label>
+				<select name="status">
+					<option value="1">启用</option>
+					<option value="0">禁用</option>
+				</select>
+			</div>
+		</div>
+		<div class="formBar">
+			<ul>
+				<li><div class="buttonActive"><div class="buttonContent"><button type="submit">添加</button></div></div></li>
+				<li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+			</ul>
+		</div>
+	</form>
+	
+</div>
