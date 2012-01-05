@@ -1,28 +1,28 @@
-	
+<!--target=navTab: 自动关联调用navTab组件-->
+<!--rel: 为navtab的ID值，后续可以用来重载该页面时使用，如当前页新增或删除数据可以通过该ID进行通知JS重载。注意rel的值区分大小写. -->
+<!--fresh: 表示重复打开navTab时是否重新加载数据-->
+<!--external: 为external="true"或者href是外网连接时，以iframe方式打开navTab页面-->
+
 <div class="accordion" fillSpace="sideBar">
-
-
-	<div class="accordionHeader">
-		<h2><span>Folder</span>人事</h2>
-	</div>
-	<div class="accordionContent">
-	                 <!--target=navTab: 自动关联调用navTab组件-->
-                    <!--rel: 为navtab的ID值，后续可以用来重载该页面时使用，如当前页新增或删除数据可以通过该ID进行通知JS重载。注意rel的值区分大小写. -->
-                    <!--fresh: 表示重复打开navTab时是否重新加载数据-->
-                    <!--external: 为external="true"或者href是外网连接时，以iframe方式打开navTab页面-->
-		<ul class="tree treeFolder">
-			<iterate id="item" name="menu" >
-			<neq name="item['name']|strtolower" value="public" >
-				<neq name="item['name']|strtolower" value="index" >
-				<eq name="item['access']" value="1">
-				<li><a href="__APP__/{$item['name']}/index/" target="navTab" rel="{$item['name']}">{$item['title']}</a></li>
-				</eq>
-				</neq>
-			</neq>
-			</iterate>
-		</ul>
-	</div>
-
-
-
+    <volist id="app" name="appgroup">
+        <div class="accordionHeader">
+            <h2><span>Folder</span>{$app['title']}</h2>
+        </div>
+        <div class="accordionContent">
+            <ul class="tree treeFolder">
+                <volist id="item" name="menu">
+                    <eq name="item['group_id']" value="$app['id']">
+                        <neq name="item['name']|strtolower" value="public">
+                            <neq name="item['name']|strtolower" value="index">
+                                <eq name="item['access']" value="1">
+                                    <li><a href="__APP__/{$item['name']}/index/" target="navTab" rel="{$item['name']}">{$item['title']}</a>
+                                    </li>
+                                </eq>
+                            </neq>
+                        </neq>
+                    </eq>
+                </volist>
+            </ul>
+        </div>
+    </volist>
 </div>
