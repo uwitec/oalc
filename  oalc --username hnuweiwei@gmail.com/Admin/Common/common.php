@@ -350,4 +350,68 @@ function getUsernameByid($id){
     }
 }
 
+	//sql备份函数,by 万维网
+	function BackupData() {
+		import("Think.Db.Db");
+        $tempsql="";
+		$db = DB::getInstance();
+		$tables = $db->getTables();
+		foreach($tables as $tbname){
+             $tempsql.="\n\r\n\n";
+            $result=M()->query('show columns from '.$tbname);
+
+            $tempsql.="create table  "."$tbname (\r\n";
+            $rsCount=count($result);
+
+            foreach ($result as $k=>$v){
+			        $field  =       $v['Field'];
+			        $type   =       $v['Type'];
+			        $default=       $v['Default'];
+			        $extra  =       $v['Extra'];
+			        $null   =       $v['Null'];
+					if(!($default=='')){
+						$default='default '.$default;
+					}
+			        if($null=='NO'){
+			            $null='not null';
+			        }else{
+			            $null="null";
+			        }
+			        if($v['Key']=='PRI'){
+			                $key    =       'primary key';
+			        }else{
+			                $key    =       '';
+			        }
+					if($k<($rsCount-1)){
+						$tempsql.="`$field` $type $null $default $key $extra ,\r\n";
+					}else{
+						//最后一条不需要","号
+						$tempsql.="`$field` $type $null $default $key $extra \r\n";
+					}
+			}
+
+            $tempsql.=")engine=innodb charset=utf8;\r\n\r\n";
+            $tempsql=str_replace(',)',')',$tempsql);
+             $tempsql.="\n\r\n\n";
+
+			$count = $db->getFields($tbname);
+			$modelname = str_replace(C('DB_PREFIX'),'',$tbname);
+			$row = D($modelname);
+			$row = $row->findAll();
+			$values = array();
+			foreach($row as $value){
+				$sql = "INSERT INTO {$tbname} VALUES(";
+				foreach($value as $v){
+					$sql.="'".mysql_real_escape_string($v)."',";
+				}
+				$sql = substr($sql,0,-1);
+				$sql.=");\n";
+				$tempsql.=$sql;
+				$sql='';
+			}
+		}
+		return $tempsql;
+	}
+
+
 ?>
