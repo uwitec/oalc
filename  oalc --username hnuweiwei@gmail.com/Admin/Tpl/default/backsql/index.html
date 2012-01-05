@@ -1,0 +1,74 @@
+<div class="page">
+    <div class="pageContent">
+
+
+
+        <form method="post" action="__URL__/Backup/navTabId/__MODULE__" class="pageForm required-validate" >
+
+        <table class="table" width="100%" layoutH="138">
+		<thead>
+		<tr>
+            <th width="25">  <input disabled="disabled" name="table[]" type="checkbox" id="table[]"    value="{$vo.Name}" checked="checked"/>  </th>
+			<th width="80">数据表</th>
+			<th width="60">记录数</th>
+			<th width="80">数据</th>
+			<th width="80">索引</th>
+            <th width="80" >碎片</th>
+            <th width="160" >创建时间</th>
+			<th width="160" >修改时间</th>
+            <th>数据中文表</th>
+		</tr>
+		</thead>
+		<tbody>
+        
+		<volist id="vo" name="list">
+			<tr target="sid_user" rel="{$vo['id']}">
+                <td> <input disabled="disabled" name="table[]" type="checkbox" id="table[]"    value="{$vo.Name}" checked="checked"/></td>
+				<td>{$vo['Name']}</td>
+				<td>{$vo['Rows']}</td>
+                <td>{$vo['Data_length']}</td>
+				<td>{$vo['Index_length']}KB</td>
+				<td>{$vo['Data_free']}字节</td>
+                <td>{$vo['Create_time']}</td>
+				<td>{$vo['Update_time']}</td>
+                <td>{$vo['Comment']}</td>
+			</tr>
+		</volist>
+
+		</tbody>
+	</table>
+
+                           <div class="formBar">
+
+
+                        <input name="zip" type="radio" value="none" checked="checked"/>
+                        不压缩
+                        <input type="radio" name="zip" value="gzip"/>
+                        压缩
+
+                        <ul>
+                            <li>
+                                <input name="type" type="radio" value="server" checked="checked"/>
+                                                       备份到服务器
+
+                            </li>
+                            <li>
+                                <input type="radio" name="type" value="local"/>
+                        备份到本地：
+                            </li>
+
+                            <li>
+                                <div class="buttonActive">
+                                    <div class="buttonContent">
+                                        <button type="submit"> 备&nbsp; &nbsp;  &nbsp;    份 </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+</form>
+    
+
+    </div>
+</div>

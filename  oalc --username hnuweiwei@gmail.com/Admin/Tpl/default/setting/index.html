@@ -1,0 +1,66 @@
+<style type="text/css">
+    .unit{
+        margin-top:8px;
+        margin-left:10px;
+    }
+</style>
+
+<div class="page">
+    <div class="pageContent">
+
+
+        <div class="panel" >
+            <h1>系统设置</h1>
+            <div>
+                <form method="post" action="__URL__/save/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this)">
+                    <div class="unit">
+                        <label>网站名称</label>
+                        <input type="text" class="required" size="30" name="SITENAME" value="{$web_config.SITENAME}"/>
+                    </div>
+                    <div class="unit">
+                        <label>公司名称</label>
+                        <input type="text" class="required" size="30"   name="COMPANY" value="{$web_config.COMPANY}"/>
+                    </div>
+                         <div class="unit">
+                        <label>公司地址</label>
+                        <input type="text" class="required" size="30"   name="ADDRESS" value="{$web_config.ADDRESS}"/>
+                    </div>
+                    <div class="unit">
+                        <label>公司电话</label>
+                        <input type="text" class="required" size="30"   name="PHONE" value="{$web_config.PHONE}"/>
+                    </div>
+                     <div class="unit">
+                        <label>公司邮箱</label>
+                        <input type="text" class="required email"  size="30"  name="EMAIL" value="{$web_config.EMAIL}"/>
+                    </div>
+                     <div class="unit">
+                        <label>公司传真</label>
+                        <input type="text"  name="FAX" size="30"  value="{$web_config.FAX}"/>
+                    </div>
+                     <div class="unit">
+                        <label>公司官网</label>
+                        <input type="text"  name="SITEURL" size="30"  value="{$web_config.SITEURL}"/>
+                    </div>
+                        <div class="unit">
+                        <label>上班时间</label>
+                        <input type="text"  name="STARTWORK" class="required" size="30"  value="{$web_config.STARTWORK}"/>
+                    </div>
+
+                    <div class="formBar">
+                        <ul>
+                            <li>
+                                <div class="buttonActive">
+                                    <div class="buttonContent">
+                                        <button type="submit">{$Think.lang._COMMON_SUBMIT_}</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        </div>
+    </div>
