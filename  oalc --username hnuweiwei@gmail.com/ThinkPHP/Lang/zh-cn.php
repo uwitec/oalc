@@ -52,5 +52,12 @@ return array(
     '_EXPRESS_ERROR_'=>'表达式错误',
     '_TOKEN_ERROR_'=>'表单令牌错误',
     '_RECORD_HAS_UPDATE_'=>'记录已经更新',
+    '_OPTIONS_CLEARCACHE_SUCCESS_'=>'缓存已刷新！',
+    '_COMMON_SUBMIT_'=>'保存',
+
+
+
+    '_OPTIONS_SAVE_SUCCESS_'=>'设置成功',
+
 );
 ?>
