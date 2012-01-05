@@ -1,0 +1,24 @@
+<div class="page">
+    <div class="pageContent" >
+        <div class="panel" >
+            <h1>系统缓存文件</h1>
+            <div>
+                <form method="post" action="__URL__/clearCache/navTabId/__MODULE__" class="pageForm required-validate" onsubmit="return validateCallback(this)">
+                    <volist id="sub" name="cache">
+                        <div class="unit">
+                            <label>{$key}</label><br />
+                            <volist id="dir" name="sub">
+                                <input type="checkbox" name="dir[]" value="{$dir}" checked> {$key}<br>
+                            </volist>
+                        </div>
+                    </volist>
+                    <div class="formBar">
+                        <ul>
+                            <li><div class="buttonActive"><div class="buttonContent"><button type="submit">清理</button></div></div></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
