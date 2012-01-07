@@ -67,6 +67,15 @@ class UserAction extends CommonAction {
         	$this->error('重置密码失败！');
         }
     }
+
+    //读取信息
+    public function userinfo(){
+        $id=$_REQUEST['id'];
+        $this->assign("user", findById("user",$id));
+        $map['user_id']=$id;
+        $this->assign("userinfo",findByMap("user_info",$map));
+        $this->display();
+    }
     
  
 }
