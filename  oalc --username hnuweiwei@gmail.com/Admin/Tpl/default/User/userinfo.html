@@ -1,0 +1,151 @@
+<style type="text/css">
+    span.error {
+    width:115px;
+}
+
+ .pageFormContent p {
+
+    margin-right: 60px;
+    
+}
+
+</style>
+
+
+<div class="pageContent"  layoutH="62" >
+
+          <!--startprint1-->
+        <div class="pageFormContent"   style=" margin-left:30px; margin-bottom:15px; ">
+			<p>
+				<label>用户账号：</label>
+				{$user.account}
+			</p>
+            <input type="hidden" name="user_id" value="{$user.id}" />
+             <p>
+				<label>出生日期：</label>
+				{$userinfo.birthday}
+			</p>
+
+            <p>
+				<label>性别：</label>
+                {$userinfo.sex|getSex}
+			</p>
+
+            <p>
+				<label>籍贯：</label>
+				{$userinfo.nativeplace}
+			</p>
+			<p>
+				<label>政治面貌：</label>
+				{$userinfo.party}
+			</p>
+			<p>
+				<label>民族：</label>
+				{$userinfo.nationality}
+			</p>
+
+            	<p>
+				<label>身份证号：</label>
+			{$userinfo.idcard}
+			</p>
+
+             <p>
+				<label>婚姻状况：</label>
+                 {$userinfo.marriage|getMarriage}
+			</p>
+
+            <div class="divider"></div>
+
+               <p>
+             <label>最高学历：</label>
+				{$userinfo.education}
+			</p>
+              <p>
+				<label>专业：</label>
+				{$userinfo.major}
+			</p>
+			<p>
+				<label>就读院校：</label>
+				{$userinfo.school}
+			</p>
+			<p>
+				<label>已工作时间：</label>
+				{$userinfo.workingtime}
+			</p>
+
+
+              <div class="divider"></div>
+
+	        <p>
+				<label>电子邮箱：</label>
+				{$userinfo.email}
+			</p>
+
+            <p>
+				<label>手机：</label>
+				{$userinfo.mobile}
+			</p>
+
+            <p>
+				<label>qq号码：</label>
+	           {$userinfo.qicq}
+            </p>
+
+             <p>
+				<label>通讯地址：</label>
+	            {$userinfo.messageaddress}
+            </p>
+
+
+			<p>
+				<label>家庭住址：</label>
+				{$userinfo.homeaddress}
+			</p>
+			<p>
+				<label>邮编：</label>
+				{$userinfo.homezipcode}
+			</p>
+
+            <p>
+				<label>紧急联络人：</label>
+			{$userinfo.emergencycontactpeople}
+			</p>
+
+            <p>
+				<label>紧急联系方式：</label>
+				{$userinfo.emergencycontacttel}
+			</p>
+
+
+            
+            <div class="divider"></div>
+
+
+
+
+			<p style="width:auto;">
+				<label style="width:auto;">
+                    家庭情况说明
+                    <span style="color:red; font-size:11px;"> (请说明家庭主要成员信息以及家庭经济情况)</span>：
+                </label>
+                <br>
+			<span style="margin-top:15px;margin-left:4px;">{$userinfo.description}</span>
+			</p>
+
+
+
+		</div>
+        <!--endprint1-->
+
+
+         <div align="center" style="margin:5px auto; "><a href="javascript:printPage(1)" style="font-size:15px;">打印</a></div>
+		<div class="formBar">
+			<ul>
+				<!--<li><a class="buttonActive" href="javascript:;"><span>保存</span></a></li>-->
+				<li> </li>
+				<li>
+					<div class="button"><div class="buttonContent"><button type="button" class="close">关闭</button></div></div>
+				</li>
+			</ul>
+		</div>
+</div>

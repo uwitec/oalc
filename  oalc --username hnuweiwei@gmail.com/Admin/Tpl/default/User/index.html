@@ -39,14 +39,17 @@
 			<th orderField="last_login_time" <if condition="$_REQUEST._order eq 'last_login_time'">class="{$_REQUEST._sort}"</if>>上次登录</th>
 			<th width="80" orderField="login_count" <if condition="$_REQUEST._order eq 'login_count'">class="{$_REQUEST._sort}"</if>>登录次数</th>
             <th width="80" orderField="status">状态</th>
-			<th width="80" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>操作</th>
-		</tr>
+
+            <th width="80" orderField="status" <if condition="$_REQUEST._order eq 'status'">class="{$_REQUEST._sort}"</if>>操作</th>
+            <th width="80" orderField="status" >查看</th>
+
+        </tr>
 		</thead>
 		<tbody>
 		<volist id="vo" name="list">
 			<tr target="sid_user" rel="{$vo['id']}">
 				<td>{$vo['id']}</td>
-				<td>{$vo['account']}</td>
+				<td><a href="__URL__/userinfo/id/{$vo.id}" target="navTab" mask="true">{$vo['account']}</a></td>
 				<td>{$vo['nickname']}</td>
 				<td>{$vo['last_login_ip']}</td>
 				<td>{$vo['last_login_time']|date="Y-m-d H:i:s",###}</td>
@@ -62,6 +65,7 @@
 
                 </td>
 				<td>{$vo['status']|showStatus=$vo['id']}</td>
+                <td><a href="__URL__/userinfo/id/{$vo.id}" target="dialog" mask="true" width="1000" height="560">查看简历</a></td>
 			</tr>
 		</volist>
 		</tbody>
