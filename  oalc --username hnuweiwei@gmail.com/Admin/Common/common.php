@@ -329,6 +329,10 @@ function findById($name,$id){
 	return $m->find($id);
 }
 
+function findByMap($name,$map){
+    $m=M($name);
+    return $m->where($map)->find();
+}
 
 function attrById($name, $attr, $id){
 	$m = M($name);
@@ -347,6 +351,30 @@ function getUsernameByid($id){
         }
     }else{
         return "无人";
+    }
+}
+
+function getSex($sexstatus){
+        if (isset($sexstatus)) {
+        if ($sexstatus=="1") {
+            return "男";
+        } else {
+            return "女";
+        }
+    }else{
+        return "不详";
+    }
+}
+
+function getMarriage($marriage){
+       if (isset($marriage)) {
+        if ($marriage=="1") {
+            return "已婚";
+        } else {
+            return "未婚";
+        }
+    }else{
+        return "不详";
     }
 }
 
